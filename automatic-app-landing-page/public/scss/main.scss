@@ -1,0 +1,31 @@
+$body-color: {{ .Site.Params.body_background_color }};
+
+$header-image: "{{ .Site.Params.cover_image }}";
+$device-color: "/images/{{ .Site.Params.device_color }}.png";
+
+$accent-color: {{ .Site.Params.link_color }};
+
+$header-title-color: {{ .Site.Params.topbar_title_color }};
+$app-title-color: {{ .Site.Params.app_title_color }};
+$app-price-color: {{ .Site.Params.app_price_color }};
+$app-description-color: {{ .Site.Params.app_description_color }};
+
+$feature-title-color: {{ .Site.Params.feature_title_color }};
+$feature-text-color: {{ .Site.Params.feature_text_color }};
+$footer-text-color: {{ .Site.Params.footer_text_color }};
+
+$header_color: {{ .Site.Params.topbar_color }};
+$header_transparency: {{ .Site.Params.topbar_transparency }};
+
+$image-overlay-color: {{ .Site.Params.cover_overlay_color }};
+$image-overlay-transparency: {{ .Site.Params.cover_overlay_transparency }};
+
+$feature-icons-foreground-color: {{ .Site.Params.feature_icons_foreground_color }};
+$feature-icons-background-color: {{ .Site.Params.feature_icons_background_color }};
+
+$social-icons-foreground-color: {{ .Site.Params.social_icons_foreground_color }};
+$social-icons-background-color: {{ .Site.Params.social_icons_background_color }};
+
+@import "base";
+@import "layout";
+@import "github-markdown";

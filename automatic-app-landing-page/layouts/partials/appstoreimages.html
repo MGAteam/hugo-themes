@@ -1,0 +1,53 @@
+{{ if .Site.Params.ios_app_id }}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+  $(function() {
+    var apiURL = "https://itunes.apple.com/lookup?id={{ .Site.Params.ios_app_id }}&country={{ .Site.Params.ios_app_country }}&callback=?";
+    $.getJSON(apiURL, function(json) {
+      if (json.results && json.results.length) {
+        console.info("Image strings loaded from Apple API.");
+        var appInfo = json.results[0];
+
+        $('link[rel="shortcut icon"]').attr("href", appInfo.artworkUrl512);
+
+        var $pageTitle = $(".pageTitle");
+        if ($.trim($($pageTitle).text()).length == 0) {
+          $($pageTitle).html(appInfo.trackName);
+        }
+
+        var $appIconLarge = $(".appIconLarge");
+        if (!$appIconLarge.attr('src')) {
+          $($appIconLarge).attr("src", appInfo.artworkUrl512);
+        }
+
+        var $appIconHeader = $(".headerIcon");
+        if (!$appIconHeader.attr('src')) {
+          $($appIconHeader).attr("src", appInfo.artworkUrl512);
+        }
+
+        var $appName = $(".appName");
+        if ($.trim($($appName).text()).length == 0) {
+          $($appName).html(appInfo.trackName);
+        }
+
+        var $headerName = $(".headerName");
+        if ($.trim($($headerName).text()).length == 0) {
+          $($headerName).html(appInfo.trackName);
+        }
+
+        var $appPrice = $(".appPrice");
+        if ($.trim($($appPrice).text()).length == 0) {
+          $($appPrice).html(appInfo.formattedPrice);
+        }
+
+        var $appStoreLink = $(".appStoreLink");
+        if ($.trim($appStoreLink.attr('href')).length == 0) {
+          $($appStoreLink).attr("href", appInfo.trackViewUrl);
+        }
+
+        console.info(appInfo);
+      }
+    });
+  });
+</script>
+{{ end }}

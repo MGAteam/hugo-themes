@@ -1,0 +1,17 @@
+{{ define "page" }}
+
+{{ partial "head.html" . }}
+
+<body class="subPageBody">
+  <div class="headerBackground subPageHeaderBackground">
+    <div class="container subPageContainer">
+      {{ partial "header.html" . }}
+      <article class="page markdown-body">
+        {{ .Content }}
+      </article>
+    </div>
+    {{ partial "appstoreimages.html" . }}
+  </div>
+</body>
+
+{{ end }}
